@@ -7,5 +7,5 @@ router.on({
     "/about": () => console.log("about page"),
 });
 
-router.notFound(() => console.log("not found"));
+// router.notFound(() => console.log("not found"));
 router.resolve();
