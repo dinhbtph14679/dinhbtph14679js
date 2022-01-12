@@ -1,9 +1,8 @@
-import data from "../ultils/data";
+import data from "../data";
 
 const NewsList = {
-    print() {
+    render() {
         return /* html */ `
-            <div class="container mx-auto">
                 <h1>Tin Tức Học Tập</h1>
                 <div class="grid grid-cols-3 gap-8">
                     ${data.map((post) => `
@@ -14,7 +13,6 @@ const NewsList = {
                             </div>
                         `).join("")}
                 </div>
-            </div>
         `;
     },
 };

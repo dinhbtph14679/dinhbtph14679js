@@ -1,11 +1,12 @@
 import NewsList from "../components/news-list";
 
 const HomePage = {
-    print() {
+    render() {
         return /* html */ `
-            <h1>Home Page</h1>
-            <div id="news">
-            ${NewsList.print()}
+            <div class="container mx-auto">
+                <div id="news">
+                    ${NewsList.render()}
+                </div>
             </div>
         `;
     },

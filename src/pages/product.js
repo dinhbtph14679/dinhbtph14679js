@@ -1,10 +1,9 @@
 import FeatureProduct from "../components/feature-product";
 
 const ProductPage = {
-    print() {
+    render() {
         return /* html */ `
-            <h1>Product Page</h1>
-            ${FeatureProduct.print()}
+            ${FeatureProduct.render()}
         `;
     },
 };
