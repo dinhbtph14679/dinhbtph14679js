@@ -1,11 +1,18 @@
 import Navigo from "navigo";
+import AboutPage from "./pages/about";
+import HomePage from "./pages/homepage";
+import ProductPage from "./pages/product";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
+const render = (content) => {
+    document.querySelector("#app").innerHTML = content.print();
+};
+
 router.on({
-    "/": () => console.log("home page"),
-    "/about": () => console.log("about page"),
+    "/": () => render(HomePage),
+    "/about": () => render(AboutPage),
+    "/product": () => render(ProductPage),
 });
 
-// router.notFound(() => console.log("not found"));
 router.resolve();
