@@ -1,7 +1,9 @@
 const Footer = {
     render() {
         return `
-            <span class="text-white">Dinhbtph14679</span>
+            <div class="bg-blue-600 text-center py-2">
+                <span class="text-white">Dinhbtph14679</span>
+            </div>
         `;
     },
 };

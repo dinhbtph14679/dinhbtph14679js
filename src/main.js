@@ -1,23 +1,33 @@
 import Navigo from "navigo";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import DaoTao from "./pages/daotao";
 import Admissions from "./pages/admissions";
+import GocSV from "./pages/gocsv";
 import HomePage from "./pages/homepage";
-import ProductPage from "./pages/product";
+import StudenCorner from "./pages/student-corner";
+import DetailPage from "./components/detail";
+import Dashboard from "./pages/admin/dashboard";
+import NewsDashboard from "./components/News";
+import NewsDashboardAdd from "./components/News/add";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
 const print = (content) => {
-    document.querySelector("#header").innerHTML = Header.render();
-    document.querySelector("#app").innerHTML = content.render();
-    document.querySelector("#footer").innerHTML = Footer.render();
+    document.querySelector("#app").innerHTML = content;
 };
 
 router.on({
-    "/": () => print(HomePage),
-    "/admissions": () => print(Admissions),
-    "/education": () => print(ProductPage),
-    "/studentcorner": () => print(),
+    "/": () => print(HomePage.render()),
+    "/admissions": () => print(Admissions.render()),
+    "/tuyendung": () => print(StudenCorner.render()),
+    "/daotao": () => print(DaoTao.render()),
+    "/gocsv": () => print(GocSV.render()),
+    "/gocsv/:id": ({ data }) => {
+        const { id } = data;
+        print(DetailPage.render(id));
+    },
+    "/admin/dashboard": () => print(Dashboard.render()),
+    "/admin/news": () => print(NewsDashboard.render()),
+    "/admin/news/add": () => print(NewsDashboardAdd.render()),
 });
 
 router.resolve();

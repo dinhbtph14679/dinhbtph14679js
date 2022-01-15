@@ -1,22 +1,16 @@
-import Banner from "../components/banner-home";
 import NewsList from "../components/news-list";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-const HomePage = {
+const GocSV = {
     render() {
-        return /* html */ `
+        return `
             <div class="max-w-6xl mx-auto">
                 <header>
                     ${Header.render()}
                 </header>
                 <main>
-                    <div>
-                        ${Banner.render()}
-                    </div>
-                    <div id="news">
-                        ${NewsList.render()}
-                    </div>
+                    ${NewsList.render()}
                 </main>
                 <footer>
                     ${Footer.render()}
@@ -25,4 +19,4 @@ const HomePage = {
         `;
     },
 };
-export default HomePage;
+export default GocSV;
