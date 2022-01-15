@@ -8,6 +8,8 @@ import DetailPage from "./components/detail";
 import Dashboard from "./pages/admin/dashboard";
 import NewsDashboard from "./components/News";
 import NewsDashboardAdd from "./components/News/add";
+import Singin from "./components/singin";
+import Signup from "./components/sign-up";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -21,6 +23,8 @@ router.on({
     "/tuyendung": () => print(StudenCorner.render()),
     "/daotao": () => print(DaoTao.render()),
     "/gocsv": () => print(GocSV.render()),
+    "/singin": () => print(Singin.render()),
+    "/singup": () => print(Signup.render()),
     "/gocsv/:id": ({ data }) => {
         const { id } = data;
         print(DetailPage.render(id));

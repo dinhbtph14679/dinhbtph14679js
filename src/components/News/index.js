@@ -1,3 +1,4 @@
+import data from "../../data";
 import NavAdmin from "../NavAdmin";
 
 const NewsDashboard = {
@@ -38,32 +39,25 @@ const NewsDashboard = {
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Tiêu đề
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Ảnh
-                            </th>
                             <th colspan="2" class=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Chức năng
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">1</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">tên tiêu đề</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <img src="./img/2.jpg" width="50" height="50" alt="">
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Active
-                                </span>
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
+                        ${data.map((news) => `
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">${news.id}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">${news.title}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                </td>
+                            </tr>
+                        `).join("")}
                     </tbody>
                 </table>
             </main>

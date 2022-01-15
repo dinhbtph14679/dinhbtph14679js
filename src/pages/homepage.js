@@ -2,6 +2,7 @@ import Banner from "../components/banner-home";
 import NewsList from "../components/news-list";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import BTNDangNhap from "../components/btn-dangnhap";
 
 const HomePage = {
     render() {
@@ -9,6 +10,7 @@ const HomePage = {
             <div class="max-w-6xl mx-auto">
                 <header>
                     ${Header.render()}
+                    ${BTNDangNhap.render()}
                 </header>
                 <main>
                     <div>
