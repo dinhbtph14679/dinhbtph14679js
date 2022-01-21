@@ -13,8 +13,8 @@ import Signup from "./components/sign-up";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
-    document.querySelector("#app").innerHTML = content;
+const print = async (content) => {
+    document.querySelector("#app").innerHTML = await content;
 };
 
 router.on({
@@ -35,3 +35,13 @@ router.on({
 });
 
 router.resolve();
+
+// const getProduct = () => new Promise((resolve, reject) => {
+//     setTimeout{() => {
+//         try {
+//             resolve([1, 2, 3, 4]);
+//         } catch (error) {
+//             reject("Khong the ket noi")
+//         }
+//     },3000;
+// });
