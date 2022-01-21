@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 import BTNDangNhap from "../components/btn-dangnhap";
 
 const HomePage = {
-    async render() {
+    render() {
         return /* html */ `
             <div class="max-w-6xl mx-auto">
                 <header>
@@ -17,7 +17,7 @@ const HomePage = {
                         ${Banner.render()}
                     </div>
                     <div id="news">
-                        ${await NewsList.render()}
+                        ${NewsList.render()}
                     </div>
                 </main>
                 <footer>

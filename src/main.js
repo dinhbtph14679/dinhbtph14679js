@@ -13,8 +13,8 @@ import Signup from "./components/sign-up";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = async (content) => {
-    document.querySelector("#app").innerHTML = await content;
+const print = (content) => {
+    document.querySelector("#app").innerHTML = content;
 };
 
 router.on({

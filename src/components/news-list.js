@@ -1,12 +1,9 @@
-// import data from "../data";
+import data from "../data";
 
 const NewsList = {
     render() {
-        return fetch("http://localhost:3001/posts")
-            .then((response) => response.json())
-            .then((data) =>
-            // eslint-disable-next-line implicit-arrow-linebreak
-            /* html */`
+        // eslint-disable-next-line implicit-arrow-linebreak
+        return /* html */`
                     <h2 class="font-semibold text-blue-900 my-4 uppercase text-2xl">Tin tức học tập</h2>
                     <div class="grid grid-cols-3 gap-8">
                         ${data.map((post) => `
@@ -19,7 +16,7 @@ const NewsList = {
                         
                     </div>
                     
-                    `);
+                    `;
     },
 };
 export default NewsList;
