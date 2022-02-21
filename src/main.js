@@ -1,47 +1,32 @@
 import Navigo from "navigo";
-import DaoTao from "./pages/daotao";
-import Admissions from "./pages/admissions";
-import GocSV from "./pages/gocsv";
 import HomePage from "./pages/homepage";
-import StudenCorner from "./pages/student-corner";
-import DetailPage from "./components/detail";
 import Dashboard from "./pages/admin/dashboard";
-import NewsDashboard from "./components/News";
-import NewsDashboardAdd from "./components/News/add";
 import Singin from "./components/singin";
 import Signup from "./components/sign-up";
+import Product from "./pages/product";
+import AboutPape from "./pages/about";
+import AdminNews from "./pages/admin/news";
+import AdminNewsAdd from "./pages/admin/news/add";
+import DetailPage from "./components/detail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
-    document.querySelector("#app").innerHTML = content;
+const print = async (content, id) => {
+    document.querySelector("#app").innerHTML = await content.render(id);
+    if (content.afterRender) await content.afterRender();
 };
 
 router.on({
-    "/": () => print(HomePage.render()),
-    "/admissions": () => print(Admissions.render()),
-    "/tuyendung": () => print(StudenCorner.render()),
-    "/daotao": () => print(DaoTao.render()),
-    "/gocsv": () => print(GocSV.render()),
-    "/singin": () => print(Singin.render()),
-    "/singup": () => print(Signup.render()),
-    "/gocsv/:id": ({ data }) => {
-        const { id } = data;
-        print(DetailPage.render(id));
-    },
-    "/admin/dashboard": () => print(Dashboard.render()),
-    "/admin/news": () => print(NewsDashboard.render()),
-    "/admin/news/add": () => print(NewsDashboardAdd.render()),
+    "/": () => print(HomePage),
+    "/product": () => print(Product),
+    "/about": () => print(AboutPape),
+    "/news": () => print(AboutPape),
+    "/singin": () => print(Singin),
+    "/singup": () => print(Signup),
+    "/product/:id": ({ data }) => print(DetailPage, data.id),
+    "/admin/dashboard": () => print(Dashboard),
+    "/admin/news": () => print(AdminNews),
+    "/admin/news/add": () => print(AdminNewsAdd),
 });
 
 router.resolve();
-
-// const getProduct = () => new Promise((resolve, reject) => {
-//     setTimeout{() => {
-//         try {
-//             resolve([1, 2, 3, 4]);
-//         } catch (error) {
-//             reject("Khong the ket noi")
-//         }
-//     },3000;
-// });
