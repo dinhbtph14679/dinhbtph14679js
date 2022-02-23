@@ -9,8 +9,8 @@ const CartsPage = {
       ${await headerAdmin.render()}
       <header class="bg-white shadow">
               <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                  <h1 class="text-3xl font-bold text-gray-900">
-                      Danh sách bài viết
+                  <h1 class="text-3xl font-bold text-gray-900 my-3">
+                      Đơn hàng
                   </h1>
                   <form>
                       <input class="shadow appearance-none border rounded w-200 py-2 px-3 

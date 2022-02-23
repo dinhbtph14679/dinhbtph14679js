@@ -13,85 +13,87 @@ const productAddForm = {
         return /* html */`
             <div class="min-h-full">
                 <!--nav-->
-                ${await headerAdmin.render()}
-                <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <h1 class="text-3xl font-bold text-gray-900">
-                        Thêm Mới
-                    </h1>
-                </div>
-                </header>
-                
-                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <main> 
-                    <!-- Replace with your content -->
-                    <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/products">Quay lại</a> </div>
-                    <div class="px-4 py-6 sm:px-0">
-                        <div class="border-4 border-dashed border-gray-200 rounded-lg">
-                            <div class="p-5">
-                                <h3 class="text-xl font-bold text-black">Thêm mới bài viết</h3>
-                                <div class="card">
-                                    <form class="space-y-5" id="form-add">
 
-                                    <div>
-                                        <label class="block mb-1 font-bold text-gray-500">Name</label>
-                                        <input id="name" value="" name="name"
-                                        type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                                    </div>
-                            
-                                    <div>
-                                        <label class="block mb-1 font-bold text-gray-500">Image</label>
-                                        <input id="image"
-                                        type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                                        <img class="w-20" src="http://res.cloudinary.com/ph-th/image/upload/v1645176656/f67vguycjxymtm8dctt4.gif"
-                                        id="imgHide" />
-                                        </div>
-                                        <p id="error_alert"></p>
-                                    <div>
-                                        <label class="block mb-1 font-bold text-gray-500">price</label>
-                                        <input id="price" value="" name="price"
-                                        type="number" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"/>
-                                    </div>
-                                   
-                                    <div>
-                                        <label class="block mb-1 font-bold text-gray-500">Khuyến mãi</label>
-                                        <input id="sale" value="" name="sale"
-                                        type="number" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                                    </div>
-                                    <div>
-                                        <label class="block mb-1 font-bold text-gray-500">Quantity</label>
-                                        <input id="quantity" value="" name="quantity"
-                                        type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
-                                    </div>
-                                    <div>
-
-                                        <label class="block mb-1 font-bold text-gray-500">CategoryId</label>
-                                        <select id="categoryId" name="categoryId"  class="  h-12 mt-1 text-sm text-pink-700 w-full rounded-lg cursor-pointer border-2 outline-none ">
-                                            <option class=" hidden">CategoryId</option>
-                                        
-                                        </select>
-                                    </div>
-                                    <div>
-                                    <label class="block mb-1 font-bold text-gray-500">Desc</label>
-                                    <textarea id="desc" value="" name="desc"
-                                    type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"></textarea>
-                                </div>
-                            
-                                    <button id="btn"
-                                    class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300">Thêm</button>
-
-                                    <a class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300 text-center" href="/admin/products"> Danh sách</a>
-
-                                </form>
-                                </div>
-                                    
-                            </div>
-                        </div>  
-                
+                <div> ${await headerAdmin.render()} </div>
+                <div>
+                    <header class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            <h1 class="text-3xl font-bold text-gray-900">
+                                Thêm Mới
+                            </h1>
+                        </div>
+                    </header>
                     
+                    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <main> 
+                        <!-- Replace with your content -->
+                        <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/products">Quay lại</a> </div>
+                        <div class="px-4 py-6 sm:px-0">
+                            <div class="border-4 border-dashed border-gray-200 rounded-lg">
+                                <div class="p-5">
+                                    <h3 class="text-xl font-bold text-black">Thêm mới bài viết</h3>
+                                    <div class="card">
+                                        <form class="space-y-5" id="form-add">
+
+                                        <div>
+                                            <label class="block mb-1 font-bold text-gray-500">Name</label>
+                                            <input id="name" value="" name="name"
+                                            type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                        </div>
+                                
+                                        <div>
+                                            <label class="block mb-1 font-bold text-gray-500">Image</label>
+                                            <input id="image"
+                                            type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                            <img class="w-20" src="http://res.cloudinary.com/ph-th/image/upload/v1645176656/f67vguycjxymtm8dctt4.gif"
+                                            id="imgHide" />
+                                            </div>
+                                            <p id="error_alert"></p>
+                                        <div>
+                                            <label class="block mb-1 font-bold text-gray-500">price</label>
+                                            <input id="price" value="" name="price"
+                                            type="number" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"/>
+                                        </div>
+                                    
+                                        <div>
+                                            <label class="block mb-1 font-bold text-gray-500">Khuyến mãi</label>
+                                            <input id="sale" value="" name="sale"
+                                            type="number" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                        </div>
+                                        <div>
+                                            <label class="block mb-1 font-bold text-gray-500">Quantity</label>
+                                            <input id="quantity" value="" name="quantity"
+                                            type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                        </div>
+                                        <div>
+
+                                            <label class="block mb-1 font-bold text-gray-500">CategoryId</label>
+                                            <select id="categoryId" name="categoryId"  class="  h-12 mt-1 text-sm text-pink-700 w-full rounded-lg cursor-pointer border-2 outline-none ">
+                                                <option class=" hidden">CategoryId</option>
+                                            
+                                            </select>
+                                        </div>
+                                        <div>
+                                        <label class="block mb-1 font-bold text-gray-500">Desc</label>
+                                        <textarea id="desc" value="" name="desc"
+                                        type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"></textarea>
+                                    </div>
+                                
+                                        <button id="btn"
+                                        class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300">Thêm</button>
+
+                                        <a class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300 text-center" href="/admin/products"> Danh sách</a>
+
+                                    </form>
+                                    </div>
+                                        
+                                </div>
+                            </div>  
+                    
+                        
+                    </div>
+                    </main>
                 </div>
-                </main>
-            </div>
         `
     },
     afterRender(){

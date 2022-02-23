@@ -87,15 +87,8 @@ const Products = {
                 </article>
             </div>
             </div>
-            <footer relative class=" bg-black h-12 flex items-center justify-center mt-16">
-               <div class="relative left-28 bottom-12 ">
-                  <span id="btn-prev" class="cursor-pointer mx-5"><ion-icon class="text-2xl border-2 border-black" name="arrow-round-back"></ion-icon></ion-icon></span>
-                  <div class="inline" id="page-number">
-                   
-                  </div>
-                  <span id="btn-next" class="cursor-pointer "><ion-icon class="text-2xl border-2 border-black" name="arrow-round-forward"></span>
-                </div>
-              <span class="text-white font-xs">Nguyễn Nhật Anh</span>
+            <footer class="bg-slate-300 h-12 flex items-center justify-center mt-4">
+                <h3 class="text-stone-700">Design by <span class="text-red-500 font-xs">Bùi Tiến Đình</span></h3>
             </footer>
         </div>
     </div>

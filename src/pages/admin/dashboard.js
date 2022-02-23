@@ -13,9 +13,8 @@ const DashBoardPage = {
                 </div>
             </div>
         </body>
-
         </html>
-        `
+        `;
     }
 }
 export default DashBoardPage;

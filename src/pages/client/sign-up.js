@@ -57,8 +57,8 @@ const SignUpPage = {
             </div>
           </div>
         </div>
-        <footer class="bg-purple-900 h-12 flex items-center justify-center mt-52">
-            <span class="text-white font-xs">Nguyễn Nhật Anh</span>
+        <footer class="bg-slate-300 h-12 flex items-center justify-center mt-4">
+                <h3 class="text-stone-700">Design by <span class="text-red-500 font-xs">Bùi Tiến Đình</span></h3>
         </footer>
       </div>
         `

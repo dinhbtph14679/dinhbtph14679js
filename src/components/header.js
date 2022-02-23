@@ -5,9 +5,6 @@ const Header = {
         return /* html */`
         <header class="">
             <div class=" h-28 ">
-            <div class="text-center bg-slate-300 p-1">
-                <a class="font-serif text-xs">Miễn phí giao hàng người chưa có người yêu</a>
-            </div>
             <div class="flex flex-row items-center justify-between px-20">
                 <a href=""><img src="https://i0.wp.com/wellbredstore.com/wp-content/uploads/2021/11/WB_NEW_LOGO_smaller.png?w=1000&ssl=1"
                 class="w-24 h-24"
