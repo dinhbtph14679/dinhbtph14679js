@@ -1,4 +1,4 @@
-export default [
+const data = [
     {
         createdAt: "2022-01-10T07:26:52.549Z",
         title: "Annie Stroman",
@@ -119,3 +119,4 @@ export default [
         id: "17",
     },
 ];
+export default data;

@@ -1,75 +1,147 @@
 import axios from "axios";
-import NavAdmin from "../../../components/NavAdmin";
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css"
+import validate  from 'jquery-validation';
+import $ from 'jquery';
+import { add } from "../../../../api/posts";
+import headerAdmin from "../../../components/headerAdmin";
 
-const AdminNewsAdd = {
-    render() {
-        return /* html */`
+const AddNewPage = {
+  async render() {
+    return /* html */ `
         <div class="min-h-full">
-            ${NavAdmin.render()}
+            <!--nav-->
+            ${await headerAdmin.render()}
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <div class="lg:flex lg:items-center lg:justify-between">
-                        <div class="flex-1 min-w-0">
-                            <h2
-                            class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"
-                            >
-                            Thêm tin tức
-                            </h2>
-                        </div>
-                        <div class="mt-5 flex lg:mt-0 lg:ml-4">
-                            <a href="/admin/news" class="sm:ml-3">
-                            <button
-                                type="button"
-                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Quay lại
-                            </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900">
+                    Thêm Mới
+                </h1>
+            </div>
             </header>
-            <main>
+             
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <main> 
+                <!-- Replace with your content -->
+                <div> <a class="text-indigo-600 hover:text-indigo-900" href="/admin/news">Quay lại</a> </div>
                 <div class="px-4 py-6 sm:px-0">
-                        <form id="form-add-news">
-                            <div class="mb-6">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tiêu đề</label>
-                                <input id="post-title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tên tiêu đề">
+                    <div class="border-4 border-dashed border-gray-200 rounded-lg">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold text-black">Thêm mới bài viết</h3>
+                            <div class="card">
+                                <form class="space-y-5" id="form-add">
+
+                                <div>
+                                    <label class="block mb-1 font-bold text-gray-500">Title</label>
+                                    <input id="title" value="" name="title"
+                                    type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                </div>
+                        
+                                <div>
+                                    <label class="block mb-1 font-bold text-gray-500">Image</label>
+                                    <input id="image"
+                                    type="File" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500">
+                                    <img class="w-20" src="http://res.cloudinary.com/ph-th/image/upload/v1645176656/f67vguycjxymtm8dctt4.gif"
+                                     id="imgHide" />
+                                     <p id="error_alert"></p>
+                                </div>
+                        
+                                <div>
+                                    <label class="block mb-1 font-bold text-gray-500">Desc</label>
+                                    <textarea id="desc" value="" name="desc"
+                                    type="text" class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"></textarea>
+                                </div>
+                        
+                                <button id="btn"
+                                class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300">Thêm</button>
+
+                                <a class="block w-full bg-yellow-400 hover:bg-yellow-300 p-4 rounded text-yellow-900 hover:text-yellow-800 transition duration-300 text-center" href="/admin/news"> Danh sách</a>
+
+                            </form>
                             </div>
-                            <div class="mb-6">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nội dung</label>
-                                <input id="post-desc" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Viết nội dung">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ảnh</label>
-                                <input id="post-img" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Viết nội dung">
-                            </div>
-                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Thêm</button>
-                        </form>
-                 </div>
+                                
+                        </div>
+                    </div>  
+               
+                
             </div>
             </main>
-      </div>
+        </div>
         `;
-    },
-    afterRender() {
-        const formAdd = document.querySelector("#form-add-news");
-        formAdd.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const post = {
-                title: document.querySelector("#post-title").value,
-                img: document.querySelector("#post-img").value,
-                desc: document.querySelector("#post-desc").value,
-            };
-            axios.post("http://localhost:3002/posts", post);
-            // fetch("http://localhost:3002/posts", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify(post),
-            // });
-        });
-    },
+  },
+
+    afterRender(){
+      const formAdd = $("#form-add");
+      const image = document.querySelector("#image");
+      const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ph-th/image/upload";
+      const preset = "rjbb3yjz";
+      const imgHide = document.querySelector("#imgHide");
+      let imgLink = "";
+      
+      image.addEventListener('change', async (e)=>{
+        imgHide.src = URL.createObjectURL(e.target.files[0])
+        
+      });
+        
+      formAdd.validate({
+        rules : {
+            "title" : {
+                required: true,
+                minlength: 10
+            },
+            "desc" : {
+                required : true,
+                minlength: 6
+            },
+           
+        },
+        messages : {
+            "title" : {
+                required : "Bạn chưa nhập title",
+                minlength: "Email cần điền trên 10 kí tự"
+            }, 
+            "desc" : {
+                required : "Bạn chưa nhập desc",
+                minlength: "Desc cần điền trên 10 kí tự"
+            }, 
+        },
+        submitHandler() {
+            async function newCreate(){
+                const today = new Date();
+                const date = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
+                const time = `${today.getHours()  }:${  today.getMinutes()  }:${  today.getSeconds()}`;
+                const dateTime = `${date} ${time}`;
+               //
+                const file = image.files[0];
+                if(file){
+                    const formData = new FormData();
+                    formData.append('file',file);
+                    formData.append("upload_preset",preset)
+                    // call api
+                    const {data} =  await axios.post( CLOUDINARY_API ,formData,{
+                        headers: {
+                            "Content-Type" : "application/form-data",
+                        }
+                    });
+                    imgLink = data.url;
+                    add ({
+                        title: document.querySelector("#title").value,
+                        img: imgLink || 'http://res.cloudinary.com/ph-th/image/upload/v1645176656/f67vguycjxymtm8dctt4.gif',
+                        desc: document.querySelector("#desc").value,
+                        createdAt : dateTime
+                    });
+                    toastr.success("Thêm sản phẩm thành công");
+                }else{
+                    document.querySelector("#error_alert").innerHTML = "Bạn chưa up ảnh kìa"
+                }
+            }
+            newCreate();
+    
+        }
+
+
+        })
+
+  },
 };
-export default AdminNewsAdd;
+export default AddNewPage;
