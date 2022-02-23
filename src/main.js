@@ -26,8 +26,6 @@ import CartsPage from "./pages/admin/cart/list";
 import EditCategoryPage from "./pages/admin/categories/edit";
 
 
-
-
 const router = new Navigo("/", { linksSelector: "a", hash : true });
 const print = async (content,id) => {
     document.getElementById("app").innerHTML = await content.render(id);
@@ -36,10 +34,8 @@ const print = async (content,id) => {
 
 router.on("/admin/*" , () => {}, {
     before(done){
-        // do something
         if(localStorage.getItem('user')){
             const userId = JSON.parse(localStorage.getItem('user')).id;
-            // console.log(userId);
             if(userId === 1){
                 done();
             }else{
@@ -54,77 +50,42 @@ router.on("/admin/*" , () => {}, {
 );
 
 router.on({
-    "/": () => {
-        print(HomePage);
-    },
+    "/": () => { print(HomePage) },
 
     "/news/:id": (value) => {
        print(DetailNewsPage,value.data.id);
     },
-
-    "/products" : ()=>{
-        print(Products);
-    },
+    "/products" : () => print(Products) ,
     "/product-detail/:id": (value) => {
         print(productDetailPage,value.data.id);
-
     },
-    "/categories" : ()=>{
-        print(Categories);
-    },
+    "/categories" : () => print(Categories),
     // cart
-    "/my-cart" : ()=>{
-        print(cartList);
-    },
-    "/paying" : () =>{
-        print(cartPayments);
-    },
-    "/null-cart" : () =>{
-        print(nullCart);
-    },
+    "/my-cart" : () => print(cartList),
+    "/paying" : () => print(cartPayments),
+    "/null-cart" : () => print(nullCart),
+
     // login
-    
-    "/signup": ()=> {
-        print(SignUpPage);
-    },
-    "/signin": ()=> {
-        print(SignInPage);
-    },
+    "/signup": () => print(SignUpPage),
+    "/signin": () => print(SignInPage),
 
     // admin
-
-    "/admin/dashboard":() => {
-        print(DashBoardPage);
-    },
-
-    "/admin/news":() => {
-        print(NewsPage);
-    },
-    "/admin/news/add": () => {
-        print(AddNewPage);
-    },
+    "/admin/dashboard": () => print(DashBoardPage),
+    "/admin/news": () => print(NewsPage),
+    "/admin/news/add":  () => print(AddNewPage),
     "/admin/news/:id/edit": (value) => {
         print(EditNewsPage,value.data.id);
-
     },
-    "/admin/products":() => {
-        print(productsPage);
-    },
-    "/admin/products/add":() => {
-        print(productAddForm);
-    },
+    "/admin/products": () => print(productsPage),
+    "/admin/products/add": () => print(productAddForm),
     "/admin/products/:id/edit":({data}) => {
         print(ProductEditPage, data.id);
     },
-    "/admin/categories/add":() => {
-        print(CategoriesUploadPage);
-    },
+    "/admin/categories/add":() => print(CategoriesUploadPage),
     "/admin/categories":() => {
         print(CategoriesPage);
     },
-    "admin/cart" :() =>{
-        print(CartsPage)
-    },
+    "admin/cart" :() => print(CartsPage),
     "admin/categories/:id/update" :({data}) =>{
         print(EditCategoryPage, data.id)
     }
@@ -133,47 +94,4 @@ router.on({
 });
 router.notFound(() => print("Not Found Page"));
 
-router.resolve()
-
-
-// // Chờ scipt load thư viện thành công thì sẽ hiển thị ra câu lệnh 
-// function loadScript(src, callback) {
-//     const script = document.createElement("script");
-//     script.src = src;
-  
-//     // Chờ load thư viện thành công
-//     script.onload = () => {
-//       callback();
-//     };
-//     document.head.append(script);
-//   }
-//   loadScript(
-//     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function",
-//     () => {
-//       console.log("script loaded");
-//     }
-//   ); // newFunction nó nằm trong đường thư viện index.js
-
-// function resolveAfter2s(){
-//     return new Promise((resolve,reject) => {
-//         setTimeout(()=>{
-//             try {
-//                 resolve(["Thầy", "Đạt"])
-//             } catch (error) {
-//                 reject("Lỗi rồi e bu ơi");
-//             }
-//         });
-//     });
-// }
-// const getData = resolveAfter2s();
-// getData.then(result => [...result,"Thầy đạt vê lót"])
-//     .then((data) => console.log(data))
-//     .catch((error) => console.log(error));
-
-// //
-// async function getData2(){
-//     const result = await resolveAfter2s();
-//     const data = await [...result,'Nhung'];
-//     console.log(data);
-// }
-// getData2();
+router.resolve();
